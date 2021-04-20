@@ -1,0 +1,46 @@
+body {
+    background-color: orange;
+    font-family: Tahoma;
+}
+
+div#corpo {
+    width: 800px;
+    margin: auto; /*Coloca o conteudo no centro*/
+    padding: 20px;
+    background-color: #fff;
+
+    /* colocando efeito de sombra de caixa */
+    /* box-shadow: 0px 0px 30px rgb(255, 251, 0); */
+    /* 0 widtg, 0 heigth, 30 de tamanho e cor cinza */
+}
+
+table.listagem {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse; /*Retirar os espaços*/
+}
+
+table.listagem tr{
+    height: 50px;
+}
+
+table.listagem td {
+    /* border: 1px solid #ddd; */
+    padding: 10px;
+}
+
+/* IMPORTANTE! */
+/* A linha de codigo abaixo vai alterar apenas as linhas (tr) que forem impares (even) */
+table.listagem tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* IMPORTANTE! */
+/* A linha abaixo está alterando apenas a primeira coluna da tabela */
+table.listagem td:nth-child(1) {
+    width: 50px;
+}
+/* aqui estou diminuindo o tamanho da terceira coluna */
+table.listagem td:nth-child(3) {
+    width: 90px;
+}
