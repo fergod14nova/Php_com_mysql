@@ -52,3 +52,13 @@ table.detalhes {
 img.mini {
     width: 50px;
 }
+
+img.full {
+    height: 400px;
+}
+
+table.detalhes td{
+    padding: 10px;
+    vertical-align: top;
+    /* border: 1px solid black; */
+}

@@ -39,8 +39,11 @@
                         $img = thumb($reg->capa);
 
                         // Criando tabela para exibir os resultados
-                        echo "<tr><td rowspan='3'><img src='$img' class='img_full'>";
+                        echo "<tr><td rowspan='3'><img src='$img' class='full'>";
                         echo "<td><h2>$reg->nome</h2>";
+                        echo "Nota: ".number_format($reg->nota,1)."/10";
+                        // O comando acima é usado para formatar um valor numerico e aumentar/diminuir as casas decimais
+                        // o numero 1 colocado como parâmetro quer dizer 1 casa depois da vírgula
                         echo "<tr><td>$reg->descricao";
                         echo "<tr><td>Admin";
                     } else {
