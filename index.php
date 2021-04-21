@@ -4,20 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="estilos/estilo.css">
     <title>Estudonauta</title>
+
 </head>
+
 <body>
 
     <?php
         require_once "includes/banco.php";
+        require_once "includes/funcoes.php";
     ?>
     <div id="corpo">
         <h1>Escolha seu jogo</h1>
         <table class="listagem">
 
         <?php
-            $busca = $banco->query("Select * from jogos order by nome"); //query SQL
+            // fazendo busca no banco de dados
+            $busca = $banco->query("Select * from jogos order by nota"); //query SQL
 
             // testando e exibindo resultados
             if(!$busca){
@@ -31,7 +36,11 @@
 
                     // criando looping
                     while($reg=$busca->fetch_object()){
-                        echo "<tr><td>$reg->capa<td>$reg->nome<td>Admin";
+                        //a variável 'reg' recebe o resultado da busca
+
+                        // função pro caso da imagem faltar --> presente em funcoes.php
+                        $t = thumb($reg->capa);
+                        echo "<tr><td><img src='$t' class='mini'><td>$reg->nome<td>Admin";
                         // os nomes dentro do echo mostrado acima são os campo do banco de dados
                         //no caso são são os campos 'capa' e 'nome'
                     }
