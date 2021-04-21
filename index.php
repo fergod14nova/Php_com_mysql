@@ -12,6 +12,7 @@
 
 <body>
 
+
     <?php
         require_once "includes/banco.php";
         require_once "includes/funcoes.php";
@@ -40,7 +41,9 @@
 
                         // função pro caso da imagem faltar --> presente em funcoes.php
                         $t = thumb($reg->capa);
-                        echo "<tr><td><img src='$t' class='mini'><td>$reg->nome<td>Admin";
+                            echo "<tr><td><img src='$t' class='mini'>";
+                            echo "<td><a href='detalhes.php?cod=$reg->cod'>$reg->nome</a>";
+                            echo "<td>Admin";
                         // os nomes dentro do echo mostrado acima são os campo do banco de dados
                         //no caso são são os campos 'capa' e 'nome'
                     }
