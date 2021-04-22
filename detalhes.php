@@ -17,6 +17,8 @@
 
     <div id="corpo">
         <?php
+            include_once "header.php";
+            
             // Puxando o código do jogo
             $c = $_GET['cod'] ?? "Falha ao carregar jogo"; 
             $busca = $banco->query("SELECT * FROM jogos WHERE cod='$c'");
@@ -52,6 +54,8 @@
                 }
             ?>
         </table>
+        <a href="index.php"><img src="icones/icoback.png" alt=""></a>
     </div>
+    <?php include_once "footer.php"; ?>
 </body>
 </html>

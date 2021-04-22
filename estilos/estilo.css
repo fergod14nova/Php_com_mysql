@@ -62,3 +62,20 @@ table.detalhes td{
     vertical-align: top;
     /* border: 1px solid black; */
 }
+
+footer {
+    text-align: center;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(75, 55, 255);
+}
+
+header {
+    font-size: 15;
+    text-align: right;
+}
+
+form#busca {
+    font-size: 15px;
+    text-align: right;
+}
