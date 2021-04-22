@@ -22,7 +22,7 @@
         $ordem = $_GET['parm'] ?? "nome";
 
         //RECEBENDO DADOS VINDO DA CAIXA DE PESQUISA
-        $chave = $_GET['c'] ?? ""; 
+        $chave = $_GET['pesquisar'] ?? ""; 
     ?>
     <div id="corpo">
         <?php include_once "header.php"; ?>
@@ -33,12 +33,16 @@
             <form action="index.php" method="get" id="busca">
                 <!-- ENVIANDO UM PARAMENTRO ATRAVÉS DO GET -->
                 Ordenar:
-                    <a href="index.php?parm=nome">Nome</a> |
-                    <a href="index.php?parm=prod">Produtora</a> |
-                    <a href="index.php?parm=n1">Nota Alta</a> |
-                    <a href="index.php?parm=n2">Nota Baixa</a> |
+                    <a href="index.php?parm=nome&pesquisar=<?php echo "$chave"; ?>">Nome</a> |
+                    <a href="index.php?parm=prod&pesquisar=<?php echo "$chave"; ?>">Produtora</a> |
+                    <a href="index.php?parm=n1&pesquisar=<?php echo "$chave"; ?>">Nota Alta</a> |
+                    <a href="index.php?parm=n2&pesquisar=<?php echo "$chave"; ?>">Nota Baixa</a> |
+                    <!-- 
+                        Os links acima irão passar dois parâmetros, o de ordem e o de pesquisa, pra isso usamos o sinal de & para concatenar os dois parametros
+                        esses parametros vão passar pra ordem e chave
+                     -->
                     <a href="index.php">Mostrar todos |</a>
-                Buscar: <input type="text" name="c" size="10" maxlength="40"/>
+                Buscar: <input type="text" name="pesquisar" size="10" maxlength="40"/>
                 <input type="submit" value="OK"/>
             </form>
         <!-- FORM DE PESQUISA -->
