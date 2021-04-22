@@ -20,6 +20,9 @@
 
         // RECEBENDO GET DO FORM DE PESQUISA E ATRIBUINDO A VARIÁVEL 'ORDEM'
         $ordem = $_GET['parm'] ?? "nome";
+
+        //RECEBENDO DADOS VINDO DA CAIXA DE PESQUISA
+        $chave = $_GET['c'] ?? ""; 
     ?>
     <div id="corpo">
         <?php include_once "header.php"; ?>
@@ -34,6 +37,7 @@
                     <a href="index.php?parm=prod">Produtora</a> |
                     <a href="index.php?parm=n1">Nota Alta</a> |
                     <a href="index.php?parm=n2">Nota Baixa</a> |
+                    <a href="index.php">Mostrar todos |</a>
                 Buscar: <input type="text" name="c" size="10" maxlength="40"/>
                 <input type="submit" value="OK"/>
             </form>
@@ -56,6 +60,20 @@
                 depois do ON temos 'j.genero = g.cod' --> isso quer dizer que o campo 'genero' da tabela 'jogos' é uma chave estrangeira herdada da tabela 'generos', que fica armazenada no campo 'cod' da tabela..
                 
             */
+            // CRIANDO RESPOSTA PARA O FORM DE PESQUISA
+            if(!empty($chave)){
+                // empty verifica se está vazio, como está acompanhado de NOT! então é SE NÃO ESTIVER VAZIO
+                $query .= "WHERE j.nome like '%$chave%' OR p.produtora like '%$chave' OR g.genero like '%$chave' ";
+
+                /**
+                 * basicamente está sendo acrescentado a query SQL o comando de pesquisar os nomes dos jogos 'j.nome' onde tenha a palavra
+                 * passada pelo input em qualquer lugar, $chave é a variável que armazena o valor digitado pelo usuário
+                 * como está sendo usado GET a chave vem pela URL e o form aponta para o próprio index.php
+                 * o sinal de % é conhecido como CORINGA ou seja, vai procurar em qualquer lugar do registro.
+                 * 
+                 *  OR p.produtora like '%$chave%' OR g.generos like '%$chave%' 
+                 */
+            }
 
             // CRIANDO FORM DE ORDENAÇÃO DOS RESULTADOS
             // ESTRUTURA DE CASO
