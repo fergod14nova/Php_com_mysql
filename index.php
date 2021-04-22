@@ -16,6 +16,10 @@
     <?php
         require_once "includes/banco.php";
         require_once "includes/funcoes.php";
+
+
+        // RECEBENDO GET DO FORM DE PESQUISA E ATRIBUINDO A VARIÁVEL 'ORDEM'
+        $ordem = $_GET['parm'] ?? "nome";
     ?>
     <div id="corpo">
         <?php include_once "header.php"; ?>
@@ -24,7 +28,12 @@
 
         <!-- FORM DE PESQUISA -->
             <form action="index.php" method="get" id="busca">
-                Ordenar: Nome | Produtora | Nota Alta | Nota Baixa |
+                <!-- ENVIANDO UM PARAMENTRO ATRAVÉS DO GET -->
+                Ordenar:
+                    <a href="index.php?parm=nome">Nome</a> |
+                    <a href="index.php?parm=prod">Produtora</a> |
+                    <a href="index.php?parm=n1">Nota Alta</a> |
+                    <a href="index.php?parm=n2">Nota Baixa</a> |
                 Buscar: <input type="text" name="c" size="10" maxlength="40"/>
                 <input type="submit" value="OK"/>
             </form>
@@ -33,7 +42,7 @@
         <table class="listagem">
         <?php
             // fazendo busca no banco de dados
-            $query = "SELECT j.cod, j.nome, g.genero, p.produtora, j.capa FROM jogos j JOIN generos g ON j.genero = g.cod JOIN produtoras p ON j.produtora = p.cod";
+            $query = "SELECT j.cod, j.nome, g.genero, p.produtora, j.capa FROM jogos j JOIN generos g ON j.genero = g.cod JOIN produtoras p ON j.produtora = p.cod ";
             /*
                 EXPLICANDO O CÓDIGO ACIMA
                 Tabelas:
@@ -48,6 +57,30 @@
                 
             */
 
+            // CRIANDO FORM DE ORDENAÇÃO DOS RESULTADOS
+            // ESTRUTURA DE CASO
+            switch ($ordem){
+                case "prod":
+                    $query .= "ORDER BY p.produtora";
+                    break;
+                case "n1":
+                    $query .= "ORDER BY j.nota DESC";
+                    break;
+                case "n2":
+                    $query .= "ORDER BY j.nota ASC";
+                    break;
+                default:
+                    $query .= "ORDER BY j.nome";
+            }
+            /**
+             * EXPLICANDO O CÓDIGO ACIMA
+             * a estrutura de caso vai verificar qual foi o parametro passado para a variável ordem
+             * o parametro está sendo passado através de GET
+             * o que estiver dentro de GET será usado para escolher a ordem da query SQL
+             * o sinal de ponto e igualdade '.=' é usado para concatenar e atribuir, ou seja
+             * depois da query digitada acima, será acrescentado ORDER BY e o campo escolhido e passado pelo GET
+             * 
+             */
             $busca = $banco->query($query); //query SQL
 
             // testando e exibindo resultados
