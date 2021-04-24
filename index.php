@@ -43,6 +43,7 @@
                      -->
                     <a href="index.php">Mostrar todos |</a>
                 Buscar: <input type="text" name="pesquisar" size="10" maxlength="40"/>
+                <!-- Esse campo é responsável pela variável Chave -->
                 <input type="submit" value="OK"/>
             </form>
         <!-- FORM DE PESQUISA -->
@@ -123,8 +124,9 @@
                         $t = thumb($reg->capa);
                             echo "<tr><td><img src='$t' class='mini'>";
                             echo "<td><a href='detalhes.php?cod=$reg->cod'>$reg->nome</a>";
-                            echo "[$reg->genero]";
-                            echo "<br> $reg->produtora";
+                            echo "<br>";
+                            echo "[$reg->genero] ";
+                            echo "$reg->produtora";
                             echo "<td>Admin";
                         // os nomes dentro do echo mostrado acima são os campo do banco de dados
                         //no caso são são os campos 'capa' e 'nome'
