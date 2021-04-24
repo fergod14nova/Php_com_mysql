@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalhes</title>
 
+    <!-- GOOGLE ÍCONS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
     <link rel="stylesheet" href="estilos/estilo.css">
 </head>
 <body>
@@ -54,7 +58,7 @@
                 }
             ?>
         </table>
-        <a href="index.php"><img src="icones/icoback.png" alt=""></a>
+        <?php echo voltar() ?>
     </div>
     <?php include_once "footer.php"; ?>
 </body>

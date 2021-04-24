@@ -10,4 +10,9 @@
             }
             //arq é o parámetro que será substituido
         }
+
+        function voltar(){
+            return " <a href='index.php'><span class='material-icons .md-60 .md-dark'>arrow_back</span></a>";
+        }
+
 ?>
