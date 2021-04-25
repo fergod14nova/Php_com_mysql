@@ -79,3 +79,51 @@ form#busca {
     font-size: 15px;
     text-align: right;
 }
+
+/* SISTEMA DE MENSAGENS */
+div.sucesso {
+    padding: 7px 15px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    background-color: rgb(147, 248, 155);
+    color: rgb(38, 95, 5);
+    
+    /* Alinhamento */
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}
+
+div.aviso {
+    padding: 7px 15px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    background-color: rgba(251, 243, 126, 0.787);
+    color: rgb(248, 205, 12);
+    
+    /* Alinhamento */
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+div.erro {
+    padding: 7px 15px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    background-color: rgb(253, 213, 213);
+    color: rgb(170, 22, 22);
+    
+    /* Alinhamento */
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+/* SISTEMA DE MENSAGENS */

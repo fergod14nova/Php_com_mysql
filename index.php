@@ -11,6 +11,7 @@
       
 
     <link rel="stylesheet" href="estilos/estilo.css">
+
     <title>Estudonauta</title>
 
 </head>
@@ -33,6 +34,7 @@
         <?php include_once "header.php"; ?>
 
         <h1>Escolha seu jogo</h1>
+        
 
         <!-- FORM DE PESQUISA -->
             <form action="index.php" method="get" id="busca">
