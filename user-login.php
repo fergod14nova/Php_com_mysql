@@ -52,8 +52,36 @@
                  require "user-login-form.php";
 
              } else{
-                 echo "Os dados foram passados";
+                 $query_verf = "SELECT usuario, nome, senha, tipo FROM usuarios WHERE usuario = '$user' LIMIT 1";
+                 $busca = $banco->query($query_verf);
+                //  Buscando usuário
+
+                // verificando se encontrou
+                if(!$busca){
+                    echo msg_erro('Falha ao acessar banco.'); //xiii, deu ruim
+                
+                    // caso encontre, iremos testar a senha
+                } else {
+                    if($busca->num_rows >0){ //verificando se a busca retornou resultados
+                        $reg = $busca->fetch_object(); //armazena os dados vindos do banco de dados (caso retorne)
+                    // verificando se a senha foi encontrada
+                        if(testarHash($senha, $reg->senha)){
+                            echo msg_sucesso('Logado com sucesso!');
+
+                            // Atibuindo valores para as variáveis de sessão
+                            $_SESSION['user'] = $reg->usuario;
+                            $_SESSION['nome'] = $reg->nome;
+                            $_SESSION['tipo'] = $reg->tipo;
+
+                        } else {
+                            echo msg_erro('Senha Inválida'); //senha errada
+                        }
+                    } else {
+                        echo msg_erro('Usuário não encontrado!'); //não controu registros
+                    }
+                }
              }
+             echo voltar();
         ?>
     </div>
 </body>

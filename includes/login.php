@@ -41,8 +41,13 @@ function gerarHash($senha) {
     return $hash;
 }
 
+function testarHash($senha, $hash){
+    $ok = password_verify(cripto($senha), $hash);
+    return $ok;
+}
 
-// FUNÇÃO PARA TESTAR SE A HASH E A SENHA SÃO COMPATÍVEIS
+
+// FUNÇÃO PARA TESTAR SE A HASH E A SENHA SÃO COMPATÍVEIS - USADA PARA FINS DE TESTE
 function verificarHash($senha, $hash)
 {
     $res = password_verify($senha, $hash); // 1 = "confere", vazio = "não confere"
@@ -57,7 +62,7 @@ function verificarHash($senha, $hash)
 
 
 
-// $teste = 'Jorge';
+// $teste = 'admin';
 // echo "SENHA INICIAL --> ".$teste."</br>";
 // echo "SENHA CRIPTOGRAFADA --> ".cripto($teste)."</br>";
 // echo "SENHA COM HASH --> ".gerarHash($teste)."</br>";
